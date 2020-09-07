@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![license badge](https://img.shields.io/github/license/santiago-rodrig/departure-times-frontend)
+![followers](https://img.shields.io/github/followers/santiago-rodrig?style=social)
+![stars](https://img.shields.io/github/stars/santiago-rodrig/departure-times-frontend?style=social)
 
 ## Available Scripts
 
