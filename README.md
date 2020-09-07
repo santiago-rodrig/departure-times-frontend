@@ -39,25 +39,31 @@ The API for creating the maps is [HERE](https://developer.here.com/products/maps
 That's everything I can think off by now, feel free to suggest more requirements using
 the [issues section of the repository](https://github.com/santiago-rodrig/departure-times-frontend/issues).
 
-### `yarn eject`
+## Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To setup this project in you local environment (Unix systems) follow these steps.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Make sure that you have the necessary tools.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [Node](https://nodejs.org/en/) (~> v14.5.0)
+- [Yarn](https://yarnpkg.com/getting-started/install) (~> 1.22.4)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Clone the repository.
 
-## Learn More
+```sh
+git clone https://github.com/santiago-rodrig/departure-times-frontend.git
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Of course, if your intention is to collaborate, fork the repository instead.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Now, install the required dependencies.
 
-### Code Splitting
+```sh
+yarn install --check-files
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+And you should be good to go, read the file `package.json` to know what tasks
+can you run on this project, to start the local web server use `yarn run start`.
 
 ### Analyzing the Bundle Size
 
