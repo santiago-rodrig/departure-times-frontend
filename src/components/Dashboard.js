@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import RoutesSelect from './RoutesSelect';
 import { useSelector } from 'react-redux';
 import { selectRoutes, populateAsync } from '../app/states/routes/routesSlice';
-
+import styles from './styles/Dashboard.module.css';
 
 const Dashboard = () => {
   const [selectedRoute, setSelectedRoute] = useState(null);
@@ -47,7 +47,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div id="dashboard">
+    <div className={styles.dashboard}>
       {displayedResult}
     </div>
   );
