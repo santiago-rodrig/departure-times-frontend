@@ -2,19 +2,25 @@
 ![followers](https://img.shields.io/github/followers/santiago-rodrig?style=social)
 ![stars](https://img.shields.io/github/stars/santiago-rodrig/departure-times-frontend?style=social)
 
-## Available Scripts
+# departure-times-frontend
 
-In the project directory, you can run:
+> This project is under development, it is on a very
+> early-stage, and lacks many important features.
 
-### `yarn start`
+The idea behind this application is to render a set of
+points in a map that represent a collection of bus stops
+in San Francisco together with the position of the
+user, then, predictions on the time of departure
+on the selected bus stop will be given after
+selecting some options on a dashboard.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[The API](https://github.com/santiago-rodrig/departure-times)
+is a separate project also built by me.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The data that comes from the API is enough for connecting with
+yet another API and create some maps for the user.
 
-### `yarn test`
+The API for creating the maps is [HERE](https://developer.here.com/products/maps).
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
