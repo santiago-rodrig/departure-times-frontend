@@ -22,18 +22,22 @@ yet another API and create some maps for the user.
 
 The API for creating the maps is [HERE](https://developer.here.com/products/maps).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Expectation of the result
 
-### `yarn build`
+<img src="./doc/expectation.jpg" alt="result expectation" width="250" height="250" />
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features to be implemented
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- The dashboard must trigger the rendering of a map with the bus stations that belong to a direction
+- The user must be able to trigger predictions over a bus stop selected beforehand on the dashboard
+- There should be GIFs everywhere indicating the state of the applications (fetching, failed, etc.)
+- The predictions must be made on every San Francisco's public transport agency, not just one
+- The application must look neat and modern
+- The application must be responsive and render properly on all screen sizes
+- There are no tests
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+That's everything I can think off by now, feel free to suggest more requirements using
+the [issues section of the repository](https://github.com/santiago-rodrig/departure-times-frontend/issues).
 
 ### `yarn eject`
 
