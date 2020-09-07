@@ -73,9 +73,9 @@ on [develop](https://github.com/santiago-rodrig/departure-times-frontend/tree/de
 is recommended), push your branch to your forked repository and create a PR (Pull Request)
 from your branch to the develop branch of the original repository.
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Specify the license. You can [read the license here](./LICENSE).
 
 ### Advanced Configuration
 
