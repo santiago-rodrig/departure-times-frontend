@@ -16,13 +16,19 @@ const slice = createSlice({
     failFetching: state => {
       state.value = [];
       state.status = 'failure';
+    },
+    startFetching: state => {
+      state.value = [];
+      state.status = 'fetching';
     }
   },
 });
 
-export const { populate, failFetching } = slice.actions;
+export const { populate, failFetching, startFetching } = slice.actions;
 
 export const populateAsync = () => dispatch => {
+  dispatch(startFetching());
+
   fetch(
     apiEndpoint,
     {
@@ -35,7 +41,7 @@ export const populateAsync = () => dispatch => {
   )
     .then(response => response.json())
     .then(payload => dispatch(populate(payload)))
-    .catch(err => dispatch(failFetching()));
+    .catch(() => dispatch(failFetching()));
 }
 
 export const selectRoutes = state => state.routes;
