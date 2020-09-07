@@ -65,9 +65,13 @@ yarn install --check-files
 And you should be good to go, read the file `package.json` to know what tasks
 can you run on this project, to start the local web server use `yarn run start`.
 
-### Analyzing the Bundle Size
+## Collaboration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+To collaborate to this project first fork the repository, after that, create a new branch based
+on [develop](https://github.com/santiago-rodrig/departure-times-frontend/tree/develop)
+(using [Git-flow](https://nvie.com/posts/a-successful-git-branching-model/)
+is recommended), push your branch to your forked repository and create a PR (Pull Request)
+from your branch to the develop branch of the original repository.
 
 ### Making a Progressive Web App
 
