@@ -22,9 +22,7 @@ const Dashboard = () => {
   }
 
   // This part conditionally sets the returned JSX
-  if (selectedRoute === null && routes.status === 'success') {
-    setSelectedRoute(routes.value[0].tag);
-  } else if (selectedRoute !== null) {
+  if (routes.status === 'success') {
     displayedResult = (
       <RoutesSelect
         routes={routes}
