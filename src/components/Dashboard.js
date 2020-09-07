@@ -1,46 +1,89 @@
-import React, { useEffect, useState } from 'react';
-import { populateAsync } from '../app/states/routes/routesSlice';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectRoutes, populateAsync } from '../app/states/routes/routesSlice';
+import RoutesSelect from './RoutesSelect';
+import DirectionsSelect from './DirectionsSelect';
+import styles from './styles/Dashboard.module.css';
 
-const Dashboard = ({ routes }) => {
-  const dispatch = useDispatch();
+const apiURL = tag => `https://srodrig-departure-time-api.herokuapp.com/api/v1/route_details?route_tag=${tag}`;
+
+const Dashboard = () => {
   const [selectedRoute, setSelectedRoute] = useState(null);
-  let displayedResult = undefined;
+  const routes = useSelector(selectRoutes);
+  const dispatch = useDispatch();
+  const [fetchRouteData, setFetchRouteData] = useState(false);
+  const [routeData, setRouteData] = useState(null);
+  const [direction, setDirection] = useState(null);
+  let result = undefined;
 
-  // This effects only is executed once
-  useEffect(() => {
+  // Callback for fetching the routes
+  const fetchRoutes = useCallback(() => {
     dispatch(populateAsync());
   }, [dispatch]);
 
-  // This handles the change events over the select React element
-  const handleRoutesSelectChange = (e) => {
-    setSelectedRoute(e.target.value);
-  }
+  const fetchRouteDataCallback = useCallback(() => {
+    fetch(
+      apiURL(selectedRoute),
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Accept': '*/*',
+        },
+      },
+    )
+      .then(response => response.json())
+      .then(data => {
+        setRouteData(data);
+        setFetchRouteData(false);
+      });
+  }, [setFetchRouteData, selectedRoute, setRouteData]);
 
-  // This part conditionally sets the returned JSX
-  if (selectedRoute === null && routes.length !== 0) {
-    displayedResult = (
-      <select value={routes[0].tag} onChange={handleRoutesSelectChange}>
-        {routes.map(route => <option key={route.tag} value={route.tag}>{route.title}</option>)}
-      </select>
-    );
+  // This effects only is executed once
+  useEffect(() => {
+    fetchRoutes();
+  }, [fetchRoutes]);
 
-    setSelectedRoute(routes[0].tag);
-  } else if (selectedRoute !== null) {
-    displayedResult = (
-      <select value={selectedRoute} onChange={handleRoutesSelectChange}>
-        {routes.map(route => <option key={route.tag} value={route.tag}>{route.title}</option>)}
-      </select>
-    );
+  useEffect(() => {
+    if (fetchRouteData) {
+      fetchRouteDataCallback();
+    }
+  }, [fetchRouteData, fetchRouteDataCallback]);
+
+  if (routes.status !== 'failure') {
+    if (!selectedRoute) {
+      result = (
+        <div className={styles.dashboard}>
+          <RoutesSelect
+            routes={routes}
+            route={selectedRoute}
+            setRoute={setSelectedRoute}
+            setFetchRouteData={setFetchRouteData}
+          />
+        </div>
+      );
+    } else {
+      result = (
+        <div className={styles.dashboard}>
+          <RoutesSelect
+            routes={routes}
+            route={selectedRoute}
+            setRoute={setSelectedRoute}
+            setFetchRouteData={setFetchRouteData}
+          />
+          <DirectionsSelect
+            routeData={routeData}
+            direction={direction}
+            setDirection={setDirection}
+          />
+        </div>
+      );
+    }
   } else {
-    displayedResult = (
-      <p>
-        Fetching data...
-      </p>
-    );
+    result = <p>Not OK</p>;
   }
 
-  return displayedResult;
+  return result;
 };
 
 export default Dashboard;

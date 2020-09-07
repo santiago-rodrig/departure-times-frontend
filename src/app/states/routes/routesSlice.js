@@ -4,17 +4,31 @@ const apiEndpoint = 'https://srodrig-departure-time-api.herokuapp.com/api/v1/rou
 
 const slice = createSlice({
   name: 'routes',
-  initialState: [],
+  initialState: {
+    value: [],
+    status: 'fetching',
+  },
   reducers: {
     populate: (state, action) => {
-      state.push(...action.payload);
+      state.value.push(...action.payload);
+      state.status = 'success';
     },
+    failFetching: state => {
+      state.value = [];
+      state.status = 'failure';
+    },
+    startFetching: state => {
+      state.value = [];
+      state.status = 'fetching';
+    }
   },
 });
 
-export const { populate } = slice.actions;
+export const { populate, failFetching, startFetching } = slice.actions;
 
 export const populateAsync = () => dispatch => {
+  dispatch(startFetching());
+
   fetch(
     apiEndpoint,
     {
@@ -26,7 +40,8 @@ export const populateAsync = () => dispatch => {
     },
   )
     .then(response => response.json())
-    .then(payload => dispatch(populate(payload)));
+    .then(payload => dispatch(populate(payload)))
+    .catch(() => dispatch(failFetching()));
 }
 
 export const selectRoutes = state => state.routes;

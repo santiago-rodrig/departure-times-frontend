@@ -1,0 +1,12 @@
+.dashboard {
+  margin: 0 auto;
+  margin-top: 10px;
+  max-width: 300px;
+  height: 300px;
+  background-color: #f1f1f1;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
